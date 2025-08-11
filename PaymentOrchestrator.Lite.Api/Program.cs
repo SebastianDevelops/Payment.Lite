@@ -20,9 +20,12 @@ builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost3000", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
+        policy.AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials()
+              .WithOrigins("http://localhost:3000", "https://localhost:3000");
     });
 });
 
@@ -36,17 +39,12 @@ using (var scope = app.Services.CreateScope())
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
-
-app.UseCors("AllowLocalhost3000");
 
 app.MapControllers();
 
