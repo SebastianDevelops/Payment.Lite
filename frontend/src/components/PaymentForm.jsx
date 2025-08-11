@@ -2,6 +2,7 @@
 import { createPayment } from '../api';
 import { TextField, Button, Box, Alert, CircularProgress, Paper, Typography } from '@mui/material';
 import AddCardIcon from '@mui/icons-material/AddCard';
+import PaymentIcon from '@mui/icons-material/Payment';
 import { styled } from '@mui/material/styles';
 
 const FormContainer = styled(Paper)(({ theme }) => ({
@@ -83,9 +84,12 @@ export default function PaymentForm({ onCreated }) {
 
     return (
         <FormContainer elevation={3}>
-            <Typography variant="h5" component="h2" fontWeight="bold" gutterBottom>
-                💳 Create New Payment
-            </Typography>
+            <Box display="flex" alignItems="center" gap={1} mb={2}>
+                <PaymentIcon sx={{ fontSize: 28 }} />
+                <Typography variant="h5" component="h2" fontWeight="bold">
+                    Create New Payment
+                </Typography>
+            </Box>
             <form onSubmit={handleSubmit}>
                 <FormFields>
                     <StyledTextField

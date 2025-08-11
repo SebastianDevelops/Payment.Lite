@@ -13,6 +13,7 @@ import {
   Alert,
   Snackbar
 } from '@mui/material';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 const theme = createTheme({
   palette: {
@@ -67,9 +68,12 @@ function App() {
       <CssBaseline />
       <Container maxWidth="lg" sx={{ py: 4 }}>
         <Box textAlign="center" mb={4}>
-          <Typography variant="h3" component="h1" gutterBottom color="primary">
-            💳 Payment Orchestrator
-          </Typography>
+          <Box display="flex" alignItems="center" justifyContent="center" gap={2} mb={1}>
+            <AccountBalanceIcon sx={{ fontSize: 40 }} color="primary" />
+            <Typography variant="h3" component="h1" color="primary">
+              Payment Orchestrator
+            </Typography>
+          </Box>
           <Typography variant="h6" color="text.secondary">
             Manage your payments with ease
           </Typography>

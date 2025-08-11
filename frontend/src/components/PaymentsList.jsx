@@ -16,6 +16,9 @@ import {
 } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import PendingIcon from '@mui/icons-material/Pending';
+import HistoryIcon from '@mui/icons-material/History';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import PaymentIcon from '@mui/icons-material/Payment';
 import { styled } from '@mui/material/styles';
 import { simulateConfirmation } from '../api';
 
@@ -99,10 +102,13 @@ export default function PaymentsList({ payments, onRefresh }) {
     if (!payments || payments.length === 0) {
         return (
             <Paper sx={{ p: 4, textAlign: 'center', borderRadius: 2 }}>
-                <Typography variant="h6" color="text.secondary">
-                    💳 No payments found
-                </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                <Box display="flex" alignItems="center" justifyContent="center" gap={1} mb={1}>
+                    <PaymentIcon sx={{ fontSize: 24 }} color="disabled" />
+                    <Typography variant="h6" color="text.secondary">
+                        No payments found
+                    </Typography>
+                </Box>
+                <Typography variant="body2" color="text.secondary">
                     Create your first payment using the form above
                 </Typography>
             </Paper>
@@ -112,12 +118,18 @@ export default function PaymentsList({ payments, onRefresh }) {
     return (
         <Box>
             <HeaderBox>
-                <Typography variant="h4" component="h2" fontWeight="bold" color="primary">
-                    📈 Payment History
-                </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
-                    Manage and track all your payments
-                </Typography>
+                <Box display="flex" alignItems="center" justifyContent="center" gap={1} mb={1}>
+                    <HistoryIcon sx={{ fontSize: 32 }} color="primary" />
+                    <Typography variant="h4" component="h2" fontWeight="bold" color="primary">
+                        Payment History
+                    </Typography>
+                </Box>
+                <Box display="flex" alignItems="center" justifyContent="center" gap={1}>
+                    <ManageAccountsIcon color="action" />
+                    <Typography variant="body1" color="text.secondary">
+                        Manage and track all your payments
+                    </Typography>
+                </Box>
             </HeaderBox>
             <StyledTableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="payments table">
@@ -144,7 +156,7 @@ export default function PaymentsList({ payments, onRefresh }) {
                                 </StyledTableCell>
                                 <StyledTableCell>
                                     <Typography fontWeight="bold" color="primary">
-                                        ${p.amount}
+                                        R{p.amount}
                                     </Typography>
                                 </StyledTableCell>
                                 <StyledTableCell>
