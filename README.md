@@ -63,6 +63,34 @@ Frontend will be available at: `http://localhost:3000`
 - **DTO Pattern**: Data transfer objects for API contracts
 - **Dependency Injection**: Built-in DI container for loose coupling
 
+### Details on the artitecutal pattern:
+Primary Patterns:
+1. Service Layer Pattern
+IPaymentService interface + PaymentService implementation
+
+Encapsulates business logic separate from controllers
+
+Provides abstraction between presentation and data layers
+
+2. Repository Pattern (implicit)
+PaymentService acts as a repository for Payment entities
+
+Abstracts data access logic from business logic
+
+Uses Entity Framework as the underlying data access mechanism
+
+3. Dependency Injection Pattern
+Controller depends on IPaymentService interface
+
+Service registered in DI container: builder.Services.AddScoped<IPaymentService, PaymentService>()
+
+Promotes loose coupling and testability
+
+4. DTO Pattern
+PaymentCreateDto separates API contracts from domain models
+
+Prevents over-posting and controls data exposure
+
 ## Styling Features
 
 ### Enhanced UI Components
