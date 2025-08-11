@@ -18,10 +18,10 @@ public class Tests
         {
             var svc = new PaymentService(db);
             var p = await svc.CreateAsync("cust-123", 100m);
-            Assert.Equals("Pending", p.Status);
+            Assert.AreEqual("Pending", p.Status);
 
             var confirmed = await svc.ConfirmAsync(p.Id);
-            Assert.Equals("Confirmed", confirmed.Status);
+            Assert.AreEqual("Confirmed", confirmed.Status);
         }
     }
 }
