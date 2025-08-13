@@ -8,6 +8,8 @@ A modern payment management system with .NET Core backend and React frontend fea
 
 #### Option 1: Docker (Recommended)
 ```bash
+cd PaymentOrchestrator.Lite/
+
 # Build the image
 docker build -f PaymentOrchestrator.Lite.Api/Dockerfile -t paymentorchestrator .
 
@@ -28,7 +30,9 @@ dotnet restore
 dotnet run
 ```
 
-Backend will be available at: `http://localhost:5000` (Docker) or `https://localhost:7000` (local)
+**IMPORTANT NOTE:** If running on DOCKER, make sure api.js `API_BASE` variable is http and when running LOCALLY make sure that `API_BASE` is set to https
+
+Backend will be available at: `http://localhost:5000` (Docker) or `https://localhost:5000` (local)
 
 ### Frontend (React)
 
