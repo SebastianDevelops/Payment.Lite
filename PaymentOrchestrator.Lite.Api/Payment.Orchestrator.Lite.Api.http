@@ -1,6 +1,33 @@
-@Payment.Orchestrator.Lite.Api_HostAddress = http://localhost:5263
+@PaymentOrchestratorLiteApi_HostAddress = https://localhost:5000
 
-GET {{Payment.Orchestrator.Lite.Api_HostAddress}}/weatherforecast/
+### BEFORE RUNNING, MAKE SURE THE API IS RUNNING:
+### Locally - https://localhost:5000
+### Docker - http://localhost:5000
+
+### Create Payment
+POST {{PaymentOrchestratorLiteApi_HostAddress}}/payments
+Content-Type: application/json
+
+{
+  "customerId": "CUST001",
+  "amount": 99.99
+}
+
+### Create Another Payment
+POST {{PaymentOrchestratorLiteApi_HostAddress}}/payments
+Content-Type: application/json
+
+{
+  "customerId": "CUST002",
+  "amount": 250.00
+}
+
+### Get All Payments
+GET {{PaymentOrchestratorLiteApi_HostAddress}}/payments
+Accept: application/json
+
+### Confirm Payment (replace with actual payment ID)
+POST {{PaymentOrchestratorLiteApi_HostAddress}}/simulate-confirmation/00000000-0000-0000-0000-000000000000
 Accept: application/json
 
 ###
