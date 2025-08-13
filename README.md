@@ -24,7 +24,9 @@ dotnet restore
 dotnet run
 ```
 
+---
 **IMPORTANT NOTE:** If running on DOCKER, make sure api.js `API_BASE` variable is http and when running LOCALLY make sure that `API_BASE` is set to https
+---
 
 Backend will be available at: `http://localhost:5000` (Docker) or `https://localhost:5000` (local)
 
