@@ -13,14 +13,8 @@ cd PaymentOrchestrator.Lite/
 # Build the image
 docker build -f PaymentOrchestrator.Lite.Api/Dockerfile -t paymentorchestrator .
 
-# Run the container (IMPORTANT: Volume mount required for SQLite persistence)
-docker run -p 5000:80 -v ${PWD}/PaymentOrchestrator.Lite.Api/Data:/app/Data paymentorchestrator
-
-# For Windows PowerShell, use:
-docker run -p 5000:80 -v "${PWD}/PaymentOrchestrator.Lite.Api/Data:/app/Data" paymentorchestrator
-
-# For Windows Command Prompt, use:
-docker run -p 5000:80 -v "%cd%/PaymentOrchestrator.Lite.Api/Data:/app/Data" paymentorchestrator
+# run image with named volume to persist sqlite data
+docker run -p 5000:80 -v payment-data:/app/Data paymentorchestrator
 ```
 
 #### Option 2: Local Development
