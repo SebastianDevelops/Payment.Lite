@@ -15,15 +15,7 @@ public class PaymentService : IPaymentService
 
     public async Task<Payment> CreateAsync(string customerId, decimal amount)
     {
-        var payment = new Payment
-        {
-            Id = Guid.NewGuid(),
-            CustomerId = customerId,
-            Amount = amount,
-            Status = "Pending",
-            CreatedAt = DateTime.UtcNow
-        };
-
+        var payment = Payment.Create(customerId, amount);
         _db.Payments.Add(payment);
         await _db.SaveChangesAsync();
         return payment;
@@ -43,7 +35,7 @@ public class PaymentService : IPaymentService
     {
         var payment = await _db.Payments.FindAsync(paymentId);
         if (payment == null) return null;
-        payment.Status = "Confirmed";
+        payment.UpdateStatus("Confirmed");
         _db.Payments.Update(payment);
         await _db.SaveChangesAsync();
         return payment;
